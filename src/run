@@ -82,14 +82,13 @@ def process_uri(doi, uri):
     uuid = get_uuid_from_uris(uris)
     assert uris and uuid
 
-    # insert input URIs if not already in database
+    # insert input URI if not already in database
     candidate = get_uri_from_uris(uri, uris)
     try:
-        assert candidate == ''
+        assert candidate == uri
     except AssertionError:
-        continue
-    new_uri = {'UUID': uuid, 'URI': uri, 'canonical': "false"}
-    submit(URI_API_URIS, new_uri)
+        new_uri = {'UUID': uuid, 'URI': uri, 'canonical': "false"}
+        submit(URI_API_URIS, new_uri)
 
 def run():
     _name, doi, uri = sys.argv
