@@ -9,16 +9,17 @@ usage: python run
 Use of this software is governed by the terms of the MIT license
 
 Dependencies:
-  httplib2==0.10.3
-  urllib3==1.20
+  httplib2==0.12.1
 """
 
 import os
 import sys
 import csv
 import json
-import urllib2
 import httplib2
+import urllib.error
+import urllib.parse
+import urllib.request
 
 URI_API_ENDP      = os.environ['URI_API_ENDP']
 URI_API_USER      = os.environ['URI_API_USER']
